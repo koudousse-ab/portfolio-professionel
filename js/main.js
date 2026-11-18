@@ -54,19 +54,6 @@
   $("#cv-link").href = D.person.cv;
   $("#year").textContent = new Date().getFullYear();
 
-  $("#term-body").innerHTML =
-    '<span class="p">$</span> whoami\n' +
-    'tchedre-aboudoul-koudouse\n' +
-    '<span class="p">$</span> cat profil.txt\n' +
-    '<span class="k">formation </span>Licence Pro Cybersécurité\n' +
-    '<span class="k">université</span>Kara, Togo\n' +
-    '<span class="k">domaines  </span>sec · net · dev · ml\n' +
-    '<span class="p">$</span> ls certifications | wc -l\n' +
-    '<span class="ok">' + D.certs.length + '</span>\n' +
-    '<span class="p">$</span> ls projets | wc -l\n' +
-    '<span class="ok">' + D.projects.length + '</span>\n' +
-    '<span class="p">$</span> <span class="cursor"></span>';
-
   $("#port-row").innerHTML = D.domains.map(function (d) {
     return '<a class="port" href="#projets" data-cat="' + d.id + '">' +
       '<span class="port-top"><span class="led" aria-hidden="true"></span>' + d.code + '</span>' +
@@ -177,4 +164,5 @@
     var b = e.target.closest("[data-copy]");
     if (b) copy(b.getAttribute("data-copy"));
   });
+  window.__app = { setFilter: setFilter, openViewer: openViewer, certs: certs, toast: toast, copy: copy, esc: esc };
 })();

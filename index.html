@@ -59,7 +59,14 @@
             <span class="leds" aria-hidden="true"><span class="led bad"></span><span class="led warn"></span><span class="led"></span></span>
             <span>koudousse@kara: ~</span>
           </div>
-          <pre id="term-body"></pre>
+          <div class="term-screen" id="term-screen">
+            <div id="term-out" aria-live="polite"></div>
+            <form id="term-form" class="term-line" autocomplete="off">
+              <label for="term-input" class="p">$</label>
+              <input id="term-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" aria-label="Saisis une commande, par exemple help" placeholder="help">
+            </form>
+          </div>
+          <div class="term-quick" id="term-quick" aria-label="Raccourcis de commandes"></div>
         </div>
       </div>
 
@@ -154,5 +161,6 @@
 
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<script src="js/terminal.js"></script>
 </body>
 </html>
