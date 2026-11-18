@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Tchedre Aboudoul-Koudouse</title>
+<meta name="description" content="Étudiant en Licence Pro Sécurité Informatique et Cybersécurité à Kara (Togo). Cybersécurité, administration systèmes et réseaux, développement et machine learning.">
+<meta property="og:title" content="Tchedre Aboudoul-Koudouse · Cybersécurité, systèmes & réseaux, développement">
+<meta property="og:description" content="Je sécurise, j'administre, je développe. Projets, certifications et contact.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Accueil">
+      <span class="leds" aria-hidden="true"><span class="led bad"></span><span class="led warn"></span><span class="led"></span></span>
+      <span>koudousse@kara</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#domaines">Domaines</a>
+      <a href="#projets">Projets</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#a-propos">À propos</a>
+      <a href="#contact" class="keep">Contact</a>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème" title="Changer de thème">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="status"><span class="led" aria-hidden="true"></span> Disponible · Kara, Togo</span>
+          <h1>
+            <span class="verb">Je sécurise,</span>
+            <span class="verb">j'administre,</span>
+            <span class="verb">je développe.</span>
+          </h1>
+          <p class="lede">Étudiant en <strong>Licence Pro Sécurité Informatique &amp; Cybersécurité</strong> à l'Université de Kara. Je teste et protège des systèmes, j'administre des serveurs et des réseaux, et j'écris le code des applications utilisées dans les écoles et les entreprises du Togo.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projets">Voir mes projets</a>
+            <a class="btn" id="cv-link" href="#" target="_blank" rel="noopener">Télécharger mon CV</a>
+            <a class="btn" href="#contact">Me contacter</a>
+          </div>
+        </div>
+
+        <div class="term" aria-label="Aperçu de profil en ligne de commande">
+          <div class="term-bar">
+            <span class="leds" aria-hidden="true"><span class="led bad"></span><span class="led warn"></span><span class="led"></span></span>
+            <span>koudousse@kara: ~</span>
+          </div>
+          <pre id="term-body"></pre>
+        </div>
+      </div>
+
+      <div class="ports">
+        <div class="ports-label">Interfaces actives</div>
+        <div class="port-row" id="port-row"></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="domaines">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Quatre terrains, une même base</h2>
+        <span class="sec-meta" id="domains-meta"></span>
+      </div>
+      <div class="domain-grid" id="domain-grid"></div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Projets</h2>
+        <span class="sec-meta" id="projects-meta"></span>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrer les projets"></div>
+      <div class="project-grid" id="project-grid"></div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Certifications et attestations</h2>
+        <span class="sec-meta" id="certs-meta"></span>
+      </div>
+      <div class="cert-grid" id="cert-grid"></div>
+    </div>
+  </section>
+
+  <section id="a-propos">
+    <div class="wrap">
+      <div class="sec-head"><h2>À propos</h2></div>
+      <div class="about-grid">
+        <div>
+          <p>Je prépare une Licence Professionnelle en Sécurité Informatique et Cybersécurité à l'Université de Kara. Ma formation m'a mené vers l'administration de serveurs Windows et Linux, les réseaux Cisco et les tests d'intrusion. Dans chacun de ces domaines, j'ai fini par écrire du code : un script pour analyser des scans, un service pour déployer, une application complète pour un lycée.</p>
+          <p>En août 2026, j'ai suivi le parcours Data Science du Togo AI Summer School, organisé par le Togo AI Lab à l'Université de Lomé. C'est là que j'ai appris le machine learning, que j'applique depuis à des données agricoles, commerciales et d'images.</p>
+          <p class="muted">Je travaille seul ou en équipe, avec une préférence pour les outils qui tiennent en production : sauvegardes, accès limités, déploiements reproductibles.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Lieu</dt><dd>Kara et Tsévié, Togo</dd></div>
+          <div><dt>Formation</dt><dd>Licence Pro Sécurité Informatique &amp; Cybersécurité, Université de Kara</dd></div>
+          <div><dt>Langues</dt><dd>Français courant (C1) · Anglais technique (A2)</dd></div>
+          <div><dt>Poste de travail</dt><dd>Ubuntu, machines virtuelles Kali et Windows sous VirtualBox</dd></div>
+          <div><dt>Secteurs</dt><dd>Éducation, administration publique, BTP, santé</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Un projet, un stage, une question ?</h2>
+        <span class="sec-meta">Réponse par e-mail ou téléphone</span>
+      </div>
+      <div class="contact-grid" id="contact-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Tchedre Aboudoul-Koudouse · Kara, Togo</span>
+    <span class="mono">Fait à la main : HTML, CSS, JavaScript</span>
+  </div>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-label="Aperçu du certificat">
+  <div class="viewer-bar">
+    <strong id="viewer-title"></strong>
+    <span style="display:flex;gap:10px;align-items:center">
+      <a class="small-btn" id="viewer-pdf" href="#" target="_blank" rel="noopener">Ouvrir le PDF</a>
+      <button class="small-btn" id="viewer-close" type="button">Fermer</button>
+    </span>
+  </div>
+  <div class="viewer-img"><img id="viewer-img" alt=""></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
