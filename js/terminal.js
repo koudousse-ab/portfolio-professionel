@@ -2,8 +2,9 @@
    Commandes : tape "help". Flèches haut/bas = historique, Tab = complétion, Ctrl+L = effacer. */
 (function () {
   "use strict";
-  var D = window.PORTFOLIO, A = window.__app;
-  if (!D || !A) return;
+  var A = window.APP;
+  if (!A) return;
+  var D = A.D;
 
   var esc = A.esc;
   var screen = document.getElementById("term-screen");
@@ -13,7 +14,7 @@
   var quick = document.getElementById("term-quick");
 
   var history = [], hIdx = 0;
-  var SECTIONS = { accueil: "#top", domaines: "#domaines", projets: "#projets", certifications: "#certifications", "a-propos": "#a-propos", apropos: "#a-propos", contact: "#contact" };
+  var SECTIONS = { accueil: "index.html", "a-propos": "a-propos.html", competences: "competences.html", projets: "projets.html", certifications: "certifications.html", services: "services.html", contact: "contact.html" };
   var FILES = ["profil.txt", "contact.txt", "stack.txt"];
   var DIRS = ["projets", "certifications", "domaines"];
 
@@ -53,9 +54,10 @@
       ["projets [sec|net|dev|ml]", "liste (et filtre) les projets"],
       ["projet <n|nom>", "détail d'un projet"],
       ["certifs", "liste des certificats"],
-      ["certif <n>", "ouvre l'aperçu d'un certificat"],
+      ["certif <n>", "ouvre un certificat"],
+      ["ouvrir <n>", "ouvre la page d'un projet"],
       ["skills [sec|net|dev|ml]", "technologies par domaine"],
-      ["cd <section>", "aller à une section : projets, contact..."],
+      ["cd <page>", "ouvre une page : projets, contact..."],
       ["contact", "e-mail, téléphone, liens"],
       ["cv", "ouvre mon CV"],
       ["theme [dark|light]", "change le thème"],
@@ -104,7 +106,6 @@
       if (!f || x.cats.indexOf(f) > -1) rows.push(k(pad(i + 1, 3)) + pad(x.title, 38) + k(x.cats.map(domainCode).join(" ")));
     });
     printLines(rows.concat([k("Tape « projet &lt;n&gt; » pour le détail.")]));
-    A.setFilter(valid ? f : "all");
   } };
 
   C.projet = { d: "", run: function (a) {
@@ -113,7 +114,8 @@
     printLines([
       ok(esc(x.title)) + "  " + k(esc(x.kicker)),
       esc(x.text),
-      k("stack ") + x.stack.map(esc).join(", ")
+      k("stack ") + x.stack.map(esc).join(", "),
+      '<a href="projet.html#' + x.slug + '">ouvrir la page du projet →</a>'
     ]);
   } };
 
@@ -126,7 +128,14 @@
     var n = parseInt(a[0], 10);
     if (isNaN(n) || !A.certs[n - 1]) return print("certif : numéro invalide (1 à " + A.certs.length + ")");
     print("Ouverture : " + esc(A.certs[n - 1].title));
-    A.openViewer(n - 1);
+    A.openViewer(A.certs[n - 1].id);
+  } };
+
+  C.ouvrir = { d: "", run: function (a) {
+    var x = findProject(a.join(" "));
+    if (!x) return print("ouvrir : projet introuvable. Tape « projets » pour la liste.");
+    print("→ projet.html#" + x.slug);
+    setTimeout(function () { window.location.href = "projet.html#" + x.slug; }, 250);
   } };
 
   C.skills = { d: "", run: function (a) {
@@ -151,13 +160,13 @@
   } };
 
   C.cd = { d: "", run: function (a) {
-    var t = (a[0] || "").replace(/^[#/]+|\/$/g, "").toLowerCase();
+    var t = (a[0] || "").replace(/^[#/]+|\/$|\.html$/g, "").toLowerCase();
     if (!t || t === "~") t = "accueil";
+    if (t === "apropos" || t === "about") t = "a-propos";
     var target = SECTIONS[t];
-    if (!target) return print("cd : " + esc(t) + " : section inconnue (" + Object.keys(SECTIONS).filter(function (s) { return s !== "apropos"; }).join(", ") + ")");
-    var el = document.querySelector(target);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    print("→ " + esc(t));
+    if (!target) return print("cd : " + esc(t) + " : page inconnue (" + Object.keys(SECTIONS).join(", ") + ")");
+    print("→ " + esc(target));
+    setTimeout(function () { window.location.href = target; }, 250);
   } };
   C.goto = C.cd;
 
